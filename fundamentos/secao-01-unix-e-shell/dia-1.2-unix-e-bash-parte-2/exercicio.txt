@@ -1,0 +1,342 @@
+Parte I - Comandos de Input e Output
+
+1. Navegue até a pasta unix_tests;
+
+vitor@VITORs-MBP ExerciciosTrybe % cd /
+vitor@VITORs-MBP / % ls
+Applications	Volumes		etc		sbin
+Library		bin		home		tmp
+System		cores		opt		usr
+Users		dev		private		var
+vitor@VITORs-MBP / % cd Users 
+vitor@VITORs-MBP /Users % ls
+Shared	vitor
+vitor@VITORs-MBP /Users % cd vitor 
+vitor@VITORs-MBP ~ % ls
+Applications	Documents	Library		Music		Public
+Desktop		Downloads	Movies		Pictures	Trybe
+vitor@VITORs-MBP ~ % cd Trybe 
+vitor@VITORs-MBP Trybe % ls
+trybe		unix_tests
+vitor@VITORs-MBP Trybe % cd unix_tests 
+vitor@VITORs-MBP unix_tests % 
+
+
+2. Crie um arquivo texto pelo terminal com o nome skills2.txt e adicione os valores Internet, Unix e Bash, um em cada linha.
+
+vitor@VITORs-MBP unix_tests % cat > skill2.txt 
+Internet
+Unix
+Bash
+^C
+vitor@VITORs-MBP unix_tests % cat skill2.txt 
+Internet
+Unix
+Bash
+vitor@VITORs-MBP unix_tests % 
+
+
+3. Adicione mais 5 itens à sua lista de skills e depois imprima a lista ordenada no terminal. 🤓
+
+vitor@VITORs-MBP unix_tests % cat >> skill2.txt 
+Ingles
+Criatividade
+Lideranca
+Responsabilidade 
+Colaboracao
+^Z
+zsh: suspended  cat >> skill2.txt
+vitor@VITORs-MBP unix_tests % sort skill2.txt 
+Bash
+Colaboracao
+Criatividade
+Ingles
+Internet
+Lideranca
+Responsabilidade
+Unix
+vitor@VITORs-MBP unix_tests % 
+
+
+4. Conte quantas linhas tem o arquivo skills2.txt.
+
+vitor@VITORs-MBP unix_tests % wc -l skill2.txt 
+       8 skill2.txt
+vitor@VITORs-MBP unix_tests % 
+
+
+5. Crie um arquivo chamado top_skills.txt usando o skills2.txt, contendo as 3 primeiras skills em ordem alfabética.
+
+vitor@VITORs-MBP unix_tests % sort skill2.txt | head -n 3 > top_skills.txt
+vitor@VITORs-MBP unix_tests % ls
+countries.txt	skill2.txt	top_skills.txt
+vitor@VITORs-MBP unix_tests % cat top_skills.txt 
+Bash
+Colaboracao
+Criatividade
+vitor@VITORs-MBP unix_tests % 
+
+
+6. Crie um novo arquivo chamado phrases2.txt pelo terminal e adicione algumas frases de sua escolha.
+
+vitor@VITORs-MBP unix_tests % cat > phases2.txt 
+Ele assiste televisao a noite toda 
+Televisoes dao medo ultimamente
+   
+Ele morreu ontem a noite
+A culpa foi da televisao
+^C
+vitor@VITORs-MBP unix_tests % 
+
+
+7. Conte o número de linhas que contêm as letras br.
+
+vitor@VITORs-MBP unix_tests % grep -iE 'b|r' phases2.txt | wc -l
+       3
+vitor@VITORs-MBP unix_tests % 
+
+
+8. Conte o número de linhas que não contêm as letras br.
+
+vitor@VITORs-MBP unix_tests % grep -iEv 'b|r' phases2.txt | wc -l
+       4
+vitor@VITORs-MBP unix_tests % 
+
+
+9. Adicione dois nomes de países ao final do arquivo phrases2.txt.
+
+vitor@VITORs-MBP unix_tests % cat >> phases2.txt 
+Brasil
+Estados Unidos        
+^C
+vitor@VITORs-MBP unix_tests % cat phases2.txt 
+Ele assiste televisao a noite toda
+Televisoes dao medo ultimamente
+
+Ele morreu ontem a noite
+A culpa foi da televisao
+Bye
+Rei bobo
+Brasil
+Estados Unidos
+vitor@VITORs-MBP unix_tests % 
+
+
+10. Crie um novo arquivo chamado bunch_of_things.txt com os conteúdos dos arquivos phrases2.txt e countries.txt
+
+vitor@VITORs-MBP unix_tests % cat phases2.txt countries.txt > bunch_of_things.txt 
+vitor@VITORs-MBP unix_tests % ls
+bunch_of_things.txt	phases2.txt		top_skills.txt
+countries.txt		skill2.txt
+
+
+11. Crie um novo arquivo bunch_of_things_ordered.txt com o conteúdo do arquivo bunch_of_things.txt ordenado.
+
+vitor@VITORs-MBP unix_tests % sort bunch_of_things.txt > bunch_of_things_ordered.txt
+vitor@VITORs-MBP unix_tests % ls
+bunch_of_things.txt		phases2.txt
+bunch_of_things_ordered.txt	skill2.txt
+countries.txt			top_skills.txt
+
+
+
+
+
+Parte II - Permissões
+
+1. Navegue até a pasta unix_tests;
+
+vitor@VITORs-MBP unix_tests % 
+
+
+2. Rode o comando ls -l e veja quais as permissões dos arquivos;
+
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-rw-r--r--  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % 
+
+
+3. Mude a permissão do arquivo bunch_of_things.txt para que todos os usuários possam ter acesso à leitura e escrita, e verifique se está correto com o comando ls -l;
+Resultado esperado: -rw-rw-rw- 1 ana ana 1860 ago 13 11:39 bunch_of_things.txt
+
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-rw-r--r--  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % chmod g+w bunch_of_things.txt
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-rw-rw-r--  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % chmod o+w bunch_of_things.txt
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-rw-rw-rw-  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % 
+
+
+4. Tire a permissão de escrita do arquivo bunch_of_things.txt para todos os usuários, verifique se está correto com o comando ls -l;
+Resultado esperado: -r--r--r-- 1 ana ana 1860 ago 13 11:39 bunch_of_things.txt
+
+vitor@VITORs-MBP unix_tests % chmod ugo-w bunch_of_things.txt
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-r--r--r--  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % 
+
+
+5. Volte à permissão do arquivo bunch_of_things.txt para a listada inicialmente utilizando o comando chmod 644 bunch_of_things.txt.
+Resultado esperado: -rw-r--r-- 1 ana ana 1860 ago 13 11:39 bunch_of_things.txt
+
+vitor@VITORs-MBP unix_tests % chmod 644 bunch_of_things.txt
+vitor@VITORs-MBP unix_tests % ls -l
+total 48
+-rw-r--r--  1 vitor  staff  1995 Sep  9 02:37 bunch_of_things.txt
+-rw-r--r--  1 vitor  staff  1996 Sep  9 02:41 bunch_of_things_ordered.txt
+-rw-r--r--  1 vitor  staff  1842 Sep  6 17:58 countries.txt
+-rw-r--r--  1 vitor  staff   153 Sep  9 02:20 phases2.txt
+-rw-r--r--  1 vitor  staff    78 Sep  8 16:59 skill2.txt
+-rw-r--r--  1 vitor  staff    30 Sep  8 17:07 top_skills.txt
+vitor@VITORs-MBP unix_tests % 
+
+
+
+
+
+Parte III - Processos & Jobs
+
+1. Liste todos os processos;
+
+vitor@VITORs-MBP unix_tests % ps
+  PID TTY           TIME CMD
+  514 ttys000    0:00.72 -zsh
+ 2486 ttys000    0:00.00 cat
+ 8206 ttys000    0:00.00 cat
+vitor@VITORs-MBP unix_tests % 
+
+
+2. Agora use o comando sleep 30 & ;
+
+vitor@VITORs-MBP unix_tests % sleep 30 &
+[3] 12009
+vitor@VITORs-MBP unix_tests % 
+
+
+3. Use a listagem de processos para encontrar o PID do processo que está executando o comando sleep 30 e termine a sua execução (mate o processo);
+
+vitor@VITORs-MBP unix_tests % ps
+  PID TTY           TIME CMD
+  514 ttys000    0:00.73 -zsh
+ 2486 ttys000    0:00.00 cat
+ 8206 ttys000    0:00.00 cat
+12020 ttys000    0:00.00 sleep 30
+vitor@VITORs-MBP unix_tests % kill 12020
+[3]    terminated  sleep 30                                                            
+vitor@VITORs-MBP unix_tests % ps
+  PID TTY           TIME CMD
+  514 ttys000    0:00.74 -zsh
+ 2486 ttys000    0:00.00 cat
+ 8206 ttys000    0:00.00 cat
+vitor@VITORs-MBP unix_tests % 
+
+
+4. Execute novamente o comando sleep 30, mas agora sem o &. Depois, faça com que ele continue executando em background;
+
+vitor@VITORs-MBP unix_tests % sleep 30 
+^Z
+zsh: suspended  sleep 30
+vitor@VITORs-MBP unix_tests % jobs
+[1]  + suspended  sleep 30
+vitor@VITORs-MBP unix_tests % bg %1
+[1]  + continued  sleep 30
+vitor@VITORs-MBP unix_tests % 
+[1]  + done       sleep 30
+vitor@VITORs-MBP unix_tests % 
+
+
+5. Crie um processo em background que rode o comando sleep por 300 segundos.
+
+vitor@VITORs-MBP / % sleep 300 &
+[1] 16694
+vitor@VITORs-MBP / % ps
+  PID TTY           TIME CMD
+15107 ttys000    0:00.04 -zsh
+16694 ttys000    0:00.00 sleep 300
+vitor@VITORs-MBP / % 
+
+
+6. Crie mais dois processos que rodem o comando sleep por 200 e 100 segundos, respectivamente.
+Você deve criá-los em foreground (sem usar o &) e suspendê-los (apertando ctrl+z) após cada um dos começar a executar.
+
+vitor@VITORs-MBP / % sleep 200
+^Z
+zsh: suspended  sleep 200
+vitor@VITORs-MBP / % sleep 300
+^Z
+zsh: suspended  sleep 300
+vitor@VITORs-MBP / % 
+
+
+7. Verifique que apenas o processo sleep 300 está em execução com o comando jobs. Suspenda a execução desse processo.
+Você vai precisar trazer o processo para foreground (fg) e suspendê-lo (ctrl+z), ou enviar um sinal.
+
+vitor@VITORs-MBP / % jobs
+[1]    running    sleep 300
+[2]  - suspended  sleep 200
+[3]  + suspended  sleep 300
+vitor@VITORs-MBP / % fg %1
+[1]    running    sleep 300
+^Z
+zsh: suspended  sleep 300
+vitor@VITORs-MBP / % jobs
+[1]  + suspended  sleep 300
+[2]    suspended  sleep 200
+[3]  - suspended  sleep 300
+vitor@VITORs-MBP / % 
+
+
+8. Retome a execução do processo sleep 100 em background com o comando bg.
+
+vitor@VITORs-MBP / % bg %1
+[1]    continued  sleep 300
+vitor@VITORs-MBP / % 
+[1]    done       sleep 300
+vitor@VITORs-MBP / % jobs
+[2]  - suspended  sleep 200
+[3]  + suspended  sleep 300
+vitor@VITORs-MBP / % 
+
+
+9. Termine a execução de todos os processos sleep (mate os processos).
+
+vitor@VITORs-MBP / % killall sleep
+[3]  + terminated  sleep 300
+[2]  + terminated  sleep 200
+vitor@VITORs-MBP / % jobs
+vitor@VITORs-MBP / % 
+
+
