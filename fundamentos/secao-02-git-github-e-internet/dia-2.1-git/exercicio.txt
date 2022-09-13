@@ -1,0 +1,201 @@
+Git - O que e e para que serve
+
+Criando um repositório
+
+Chegou a hora de praticar os seus conhecimentos sobre o Git!
+Para isso, você vai criar um novo diretório no seu computador e realizar algumas modificações 🤩
+
+1. Crie uma pasta no seu computador;
+
+vitor@VITORs-MBP Trybe % mkdir MeuPrimeiroRepositorio
+vitor@VITORs-MBP Trybe % ls
+MeuPrimeiroRepositorio	trybe			unix_tests
+vitor@VITORs-MBP Trybe % 
+
+
+2. Acesse a pasta que você acabou de criar;
+
+vitor@VITORs-MBP Trybe % cd MeuPrimeiroRepositorio 
+vitor@VITORs-MBP MeuPrimeiroRepositorio % ls
+vitor@VITORs-MBP MeuPrimeiroRepositorio %
+
+
+3. Inicie o versionamento com o comando git init;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git init
+Initialized empty Git repository in /Users/vitor/Trybe/MeuPrimeiroRepositorio/.git/
+vitor@VITORs-MBP MeuPrimeiroRepositorio % ls -a
+.	..	.git
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+4. Abra a pasta no VSCode com o comando code .;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % code .
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+5. Crie um arquivo chamado README.md;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % ls
+README.md
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+6. Adicione o arquivo novo em staging e realize um commit. Por exemplo: git add . e git commit -m "Descreva a alteração realizada";
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git add README.md 
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git status
+On branch main
+
+No commits yet
+
+Changes to be committed:
+  (use "git rm --cached <file>..." to unstage)
+        new file:   README.md
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git commit -m 'Adicina README.md'
+[main (root-commit) 2728837] Adicina README.md
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 README.md
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+7. Crie uma nova branch com o comando git checkout -b. Por exemplo: git checkout -b adiciona-readme;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git checkout -b adiciona-readme
+Switched to a new branch 'adiciona-readme'
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git branch
+* adiciona-readme
+  main
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+8. Faça uma alteração no README.me e retorne para a branch main e realize o merge das alterações com o comando git merge nome-da-branch. Por exemplo: git merge adiciona-readme.
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % cat > README.md 
+Mudando README.
+^C
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git add README.md
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git status
+On branch adiciona-readme
+Changes to be committed:
+  (use "git restore --staged <file>..." to unstage)
+        modified:   README.md
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git commit -m 'Atualiza README'
+[adiciona-readme dd85d83] Atualiza README
+ 1 file changed, 1 insertion(+)
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git branch
+* adiciona-readme
+  main
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git checkout main
+Switched to branch 'main'
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git branch
+  adiciona-readme
+* main
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git merge adiciona-readme
+Updating 2728837..d2a4b11
+Fast-forward
+ README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+Agora que você já criou a pasta e mergeou as alterações, vamos avançar e criar novas branches!
+
+
+1. Acesse a branch main e crie uma branch nova chamada atualiza-readme;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git checkout -b atualiza-readme
+Switched to a new branch 'atualiza-readme'
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+2. Acesse a branch atualiza-readme e crie um arquivo chamado infos.txt;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % touch infos.txt
+vitor@VITORs-MBP MeuPrimeiroRepositorio % ls
+README.md       infos.txt
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+3. Adicione as alterações em staging e realize um commit;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git add .
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git commit -m 'Cria o arquivo infos'
+[atualiza-readme 0288ba5] Cria o arquivo infos
+ 1 file changed, 0 insertions(+), 0 deletions(-)
+ create mode 100644 infos.txt
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+4. Adicione seu nome e sobrenome no arquivo infos.txt;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % cat > infos.txt 
+Vitor Alves Santos
+^C
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+5. Adicione novamente as alterações em staging e realize um commit;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git add .
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git commit -m 'Adiciona nome em infos'
+[atualiza-readme a3a40cf] Adiciona nome em infos
+ 1 file changed, 1 insertion(+)
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+6. Crie uma branch nova a partir da branch atualiza-readme. A nova branch deve se chamar adiciona-infos;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git checkout -b adicina-infos
+Switched to a new branch 'adicina-infos'
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+7. Acesse a branch adiciona-infos e utilize sua criatividade para escrever o passo a passo de como o versionamento funciona no README.md. Por exemplo: "O primeiro passo é ter uma pasta versionada e criar um estrutura inicial e fazemos isso utilizando o comando git init. O segundo passo é criar uma branch nova com o comando git checkout nome-da-branch ou git checkout -b nome-da-branch", etc. Você também pode utilizar esse momento para escrever e responder as dúvidas que você ainda tem sobre versionamento.
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % cat >> README.md 
+O primeiro passo é ter uma pasta versionada e criar um estrutura inicial e fazemos isso utilizando o comando git init. O segundo passo é criar uma branch nova com o comando git checkout nome-da-branch ou git checkout -b nome-da-branch.
+^C
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+8. Adicione as alterações em staging, realize o commit;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git add .
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git commit -m 'Adiciona passo a passo de versionamento em '
+[adicina-infos 1f11179] Adiciona passo a passo de versionamento em
+ 1 file changed, 1 insertion(+)
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+9. Volte para a branch atualiza-readme e realize o merge das alterações feitas na branch adiciona-infos;
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git checkout atualiza-readme 
+Switched to branch 'atualiza-readme'
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git merge adicina-infos
+Updating a3a40cf..1f11179
+Fast-forward
+ README.md | 1 +
+ 1 file changed, 1 insertion(+)
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
+
+10. Retorne para a branch main e realize o merge das alterações.
+
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git branch
+  adicina-infos
+  adiciona-readme
+  atualiza-readme
+* main
+vitor@VITORs-MBP MeuPrimeiroRepositorio % git merge atualiza-readme 
+Updating d2a4b11..1f11179
+Fast-forward
+ README.md | 1 +
+ infos.txt | 1 +
+ 2 files changed, 2 insertions(+)
+ create mode 100644 infos.txt
+vitor@VITORs-MBP MeuPrimeiroRepositorio % 
+
