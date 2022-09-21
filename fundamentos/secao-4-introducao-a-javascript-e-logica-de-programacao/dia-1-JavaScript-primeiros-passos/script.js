@@ -33,5 +33,48 @@ console.log(perimeter);
 
 //Condições If e Else
 
-///*
-const nota;
+/*
+const nota = 100;
+
+if (nota >= 80){
+    console.log('Parabéns, você foi aprovada(o)!');
+} else if (nota < 80 && nota >= 60){
+    console.log('Você está na nossa lista de espera');
+} else {
+    console.log('Você foi reprovada(o)');
+}
+*/
+
+
+
+
+
+//Operadores lógicos
+
+/*
+let weekDay = 'quarta-feira';
+if (weekDay == 'segunda-feira' || weekDay == 'terça-feira' || weekDay == 'quarta-feira' || weekDay == 'quinta-feira' || weekDay == 'sexta-feira'){
+    console.log('Oba, mais um dia de aprendizado na Trybe >:D');
+}else {
+    console.log('FINALMENTE, descanso merecido UwU');
+}
+*/
+
+
+
+
+//Switch e Case
+
+/*
+let status;
+
+switch (status) {
+    case 'aprovada': console.log('Parabéns, você foi aprovada(o)!');
+    break;
+    case 'lista': console.log('Você está na nossa lista de espera');
+    break;
+    case 'reprovada': console.log('Você foi reprovada(o)');
+    break;
+    default: console.log('Informação incorreta');
+}
+*/
