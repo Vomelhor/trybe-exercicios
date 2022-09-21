@@ -1,0 +1,7 @@
+div:hover {
+    position: absolute;
+    border: 0;
+}
+div:nth-last-child(n+1) {
+    background-color:<?php printf( "#%06X\n", mt_rand( 0, 0x222222 )); ?>'>
+}
