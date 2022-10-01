@@ -40,12 +40,31 @@ function createDaysOfTheMonth() {
 createDaysOfTheMonth();
 
 function creatButton (param) {
-  let buttonContainer = document.querySelector('.buttons-container');
+  let buttonContainer = document.getElementsByClassName('buttons-container');
   let button = document.createElement('button');
   button.id = 'btn-holiday';
   button.innerHTML = param;
-  buttonContainer.appendChild(button);
+  buttonContainer[0].appendChild(button);
 }
 
 creatButton('Feriados');
 
+function changeBackground () {
+  let button = document.getElementById('btn-holiday');
+  let holiday = document.getElementsByClassName('holiday');
+  let inicialColor = 'rgb(238,238,238)';
+  let newColor = 'lightgrey';
+
+  button.addEventListener('click', function(){
+    for (let index = 0; index < holiday.length; index += 1) {
+      if (holiday[index].style.backgroundColor === newColor) {
+        holiday[index].style.backgroundColor = inicialColor;
+      }
+      else {
+        holiday[index].style.backgroundColor = newColor;
+      }
+    }
+  });
+}
+
+changeBackground();
