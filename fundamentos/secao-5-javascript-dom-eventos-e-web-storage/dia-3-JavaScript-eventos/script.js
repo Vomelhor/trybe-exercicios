@@ -68,3 +68,14 @@ function changeBackground () {
 }
 
 changeBackground();
+
+function addNewButton (param) {
+  let buttonContainer = document.getElementsByClassName('buttons-container');
+  let button = document.createElement('button');
+  button.id = 'btn-friday';
+  button.innerHTML = param;
+  buttonContainer[0].appendChild(button);
+}
+
+addNewButton('Sesta-feira');
+
