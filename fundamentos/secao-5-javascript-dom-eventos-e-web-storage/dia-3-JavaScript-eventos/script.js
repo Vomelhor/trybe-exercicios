@@ -77,5 +77,24 @@ function addNewButton (param) {
   buttonContainer[0].appendChild(button);
 }
 
-addNewButton('Sesta-feira');
+addNewButton('Sexta-feira');
 
+function changeFriday () {
+  let friday = document.getElementsByClassName('friday');
+  let button = document.getElementById('btn-friday');
+  let inicialFriday = friday;
+
+  button.addEventListener('click', function(){
+    for (let index = 0; index < friday.length; index += 1){
+
+      if (friday[index] === inicialFriday[index]) {
+        friday[index].innerHTML = 'Sextou';
+      }
+      else if (friday[index].innerHTML === 'Sextou') {
+        friday[index].innerHTML = inicialFriday[index].innerHTML;
+      }
+    }
+  })
+}
+
+changeFriday();
