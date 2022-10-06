@@ -90,7 +90,7 @@ function changeFriday () {
       if (friday[index] === inicialFriday[index]) {
         friday[index].innerHTML = 'Sextou';
       }
-      else if (friday[index].innerHTML === 'Sextou') {
+      else if (friday[index].innerHTML !== 'Sextou') {
         friday[index].innerHTML = inicialFriday[index].innerHTML;
       }
     }
