@@ -1,21 +1,3 @@
-Exercícios - agora, a prática: Organizando uma biblioteca
-🚀 Se liga nesse foguete!
-
-Os exercícios destacados com 🚀 são os fundamentais pra você ir bem no projeto! Todos os exercícios vão contribuir com sua formação, mas fique de olho nesses! 👀
-
-Instruções para a realização dos exercícios
-Nos exercícios a seguir, você trabalhará com uma estrutura de dados representando uma lista de livros, contendo informações como nome do livro, gênero, pessoa autora do livro e data de lançamento.
-
-Em cada exercício, será pedido que você encontre ou produza alguma informação a respeito dessa lista utilizando as funções que você aprendeu hoje. Todos os exercícios contêm um código-base. Você deverá copiar esse código e salvá-lo em um arquivo nomeado conforme o número do exercício, completando a função em branco.
-
-Por exemplo, o exercício 1 deve ser salvo no arquivo exercise1.js, e assim por diante.
-
-🚀 Organizando uma biblioteca
-Estes exercícios praticam os conceitos de Higher Order Functions associados a outros já vistos, como arrow functions, template literals, objetos e temas dos fundamentos. Essa mistura de conceitos é muito importante para o seu aprendizado, então use tudo o que sabe para resolver os exercícios!
-
-Utilize o seguinte código como template para realizar os exercícios:
-
-Copiar
 const books = [
   {
     id: 1,
@@ -80,26 +62,25 @@ const books = [
 ];
 
 // Adicione o código do exercício aqui:
-Encontre o nome da primeira pessoa autora do livro nascida no ano de 1947.
-De olho na dica 👀: use a função find.
 
-Copiar
-function authorBornIn1947() {
-  // escreva aqui o seu código
-}
-Retorne o nome do livro de menor nome.
-De olho na dica 👀: use a função forEach.
+const firstAuthorIn1947 = () => books.find((book) => book.author.birthYear === 1947).author.name;
 
-Copiar
-function smallerName() {
+console.log(firstAuthorIn1947());
+
+const smallerName = () => {
   let nameBook;
   // escreva aqui o seu código
-
+  books.forEach((book) => {
+    if (!nameBook || book.name.length < nameBook.length) {
+      nameBook = book.name;
+    }
+  });
   // Variável nameBook que receberá o valor do menor nome;
   return nameBook;
-}
-Encontre o primeiro livro cujo nome possui 26 caracteres.
-Copiar
+};
+
+console.log(smallerName());
+
 const expectedResult = {
   id: 1,
   name: 'As Crônicas de Gelo e Fogo',
@@ -112,10 +93,12 @@ const expectedResult = {
 };
 function getNamedBook() {
   // escreva seu código aqui
+  return books.find((book) => book.name.length === 26);
 }
-Ordene os livros por data de lançamento em ordem decrescente.
-Copiar
-const expectedResult = [
+
+console.log(getNamedBook());
+
+const expectedResult2 = [
   {
     id: 1,
     name: 'As Crônicas de Gelo e Fogo',
@@ -162,25 +145,37 @@ const expectedResult = [
 
 function booksOrderedByReleaseYearDesc() {
   // escreva aqui seu código
+  return books.sort((bookA, bookB) => bookB.releaseYear - bookA.releaseYear);
 }
-Faça uma função que retorne true, se todas as pessoas autoras nasceram no século XX, ou false, caso contrário.
-Copiar
-const expectedResult = false;
+
+console.log(booksOrderedByReleaseYearDesc());
+
+const expectedResult3 = false;
 
 function everyoneWasBornOnSecXX() {
   // escreva seu código aqui
+  return books.every((book) => (book.author.birthYear > 1900 && book.author.birthYear <= 2000));
 }
-Faça uma função que retorne true, se algum livro foi lançado na década de 80, e false, caso contrário.
-Copiar
-const expectedResult = true;
+
+console.log(everyoneWasBornOnSecXX());
+
+const expectedResult4 = true;
 
 function someBookWasReleaseOnThe80s() {
   // escreva seu código aqui
+  return books.some((book) => (book.releaseYear >= 1980 && book.releaseYear < 1990));
 }
-Faça uma função que retorne true, caso nenhum author tenha nascido no mesmo ano, e false, caso contrário.
-Copiar
-const expectedResult = false;
+
+console.log(someBookWasReleaseOnThe80s());
+
+const expectedResult5 = false;
 
 function authorUnique() {
   // escreva seu código aqui
+  return books.every((book) =>
+    !books.some((bookSome) =>
+      (bookSome.author.birthYear === book.author.birthYear)
+      && (bookSome.author.name !== book.author.name)));
 }
+
+console.log(authorUnique());
