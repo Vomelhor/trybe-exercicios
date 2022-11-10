@@ -1,0 +1,16 @@
+{
+  "name": "dia-2-javascript-assincrono-promises-e-fetch",
+  "version": "1.0.0",
+  "description": "Exercícios - agora, a prática API de Super Heróis Vamos criar uma aplicação que busca a imagem e o nome de uma super heroína ou um super herói.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "vite"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "sweetalert2": "^11.6.7",
+    "vite": "^3.2.3"
+  }
+}
